@@ -1,0 +1,3 @@
+# Used to get an access token given an authorization key
+POST {{baseUrl}}/token?grant_type=client_credentials
+Authorization: Basic {{authorization}}
