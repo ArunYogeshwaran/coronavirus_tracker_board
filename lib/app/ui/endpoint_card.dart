@@ -6,6 +6,14 @@ class EndpointCard extends StatelessWidget {
   final int count;
   EndpointCard({Key key, this.endpoint, this.count});
 
+  static Map<Endpoint, String> _cardsData = {
+    Endpoint.cases: 'Cases',
+    Endpoint.casesSuspected: 'Suspected cases',
+    Endpoint.casesConfirmed: 'Confirmed cases',
+    Endpoint.deaths: 'Deaths',
+    Endpoint.recovered: 'Recovered',
+  };
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -17,7 +25,7 @@ class EndpointCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                'Cases',
+                _cardsData[endpoint],
                 style: Theme.of(context).textTheme.headline5,
               ),
               Text(

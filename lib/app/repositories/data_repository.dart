@@ -16,7 +16,7 @@ class DataRepository {
           accessToken: _accessToken, endpoint: endpoint),
       );
 
-  Future<EndpointsData> getAllEndpointsData(Endpoint endpoint) async =>
+  Future<EndpointsData> getAllEndpointsData() async =>
       await _getDataRefreshingToken<EndpointsData>(
         onGetData: _getAllEndpointsData,
       );
