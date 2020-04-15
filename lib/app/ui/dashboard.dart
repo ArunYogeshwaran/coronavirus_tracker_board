@@ -2,6 +2,7 @@ import 'package:coronavirus_tracker_board/app/repositories/data_repository.dart'
 import 'package:coronavirus_tracker_board/app/repositories/endpoints_data.dart';
 import 'package:coronavirus_tracker_board/app/services/api.dart';
 import 'package:coronavirus_tracker_board/app/ui/endpoint_card.dart';
+import 'package:coronavirus_tracker_board/app/ui/last_updated_status_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -37,6 +38,10 @@ class _DashboardState extends State<Dashboard> {
         onRefresh: _updateData,
         child: ListView(
           children: <Widget>[
+            LastUpdatesStatusText(
+                text: _endpointsData != null
+                    ? _endpointsData.values[Endpoint.cases]?.date?.toString() ?? ""
+                    : ""),
             for (final endpoint in Endpoint.values)
               EndpointCard(
                   endpoint: endpoint,
