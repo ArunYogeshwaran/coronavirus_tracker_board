@@ -21,6 +21,10 @@ class _DashboardState extends State<Dashboard> {
   @override
   void initState() {
     super.initState();
+    final dataRepository = Provider.of<DataRepository>(context, listen: false);
+    // Retrieve from local cache as soon as we launch the app
+    // This can be a synchronous call as it will load faster because we are fetching only from SharedPreferences
+    _endpointsData = dataRepository.getAllEndpointsCachedData();
     _updateData();
   }
 
