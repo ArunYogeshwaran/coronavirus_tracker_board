@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DataCacheService {
-  DataCacheService(@required this.sharedPreferences);
+  DataCacheService({@required this.sharedPreferences});
   final SharedPreferences sharedPreferences;
 
   static String countValueKey(Endpoint endpoint) => '$endpoint/count';
