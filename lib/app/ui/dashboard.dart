@@ -41,7 +41,7 @@ class _DashboardState extends State<Dashboard> {
               EndpointCard(
                   endpoint: endpoint,
                   count: _endpointsData != null
-                      ? _endpointsData.values[endpoint]
+                      ? _endpointsData.values[endpoint]?.count
                       : null),
           ],
         ),
