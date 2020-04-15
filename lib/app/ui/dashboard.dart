@@ -3,6 +3,7 @@ import 'package:coronavirus_tracker_board/app/repositories/endpoints_data.dart';
 import 'package:coronavirus_tracker_board/app/services/api.dart';
 import 'package:coronavirus_tracker_board/app/ui/endpoint_card.dart';
 import 'package:coronavirus_tracker_board/app/ui/last_updated_status_text.dart';
+import 'package:coronavirus_tracker_board/app/ui/show_alert_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'dart:io';
@@ -30,8 +31,20 @@ class _DashboardState extends State<Dashboard> {
       setState(() {
         _endpointsData = endpointsData;
       });
-    } on SocketException catch (ex) {
-      print(ex);
+    } on SocketException catch (_) {
+      showAlertDialog(
+        context: context,
+        title: 'Connection Error',
+        content: 'Could not retrieve data. Please try again later.',
+        defaultActionText: 'OK',
+      );
+    } catch (_) {
+      showAlertDialog(
+        context: context,
+        title: 'Unknown Error',
+        content: 'Please contact support or try again later.',
+        defaultActionText: 'OK',
+      );
     }
   }
 
