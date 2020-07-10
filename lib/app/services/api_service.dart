@@ -21,7 +21,7 @@ class APIService {
   Future<String> getAccessToken() async {
     final response = await http.post(
       api.tokenUri().toString(),
-      headers: {Api_Authorization: 'Api_Authorization_Basic ${api.apiKey}'},
+      headers: {Api_Authorization: 'Basic ${api.apiKey}'},
     );
     if (response.statusCode == 200) {
       final data = json.decode(response.body);

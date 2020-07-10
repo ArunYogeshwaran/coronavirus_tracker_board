@@ -7,8 +7,8 @@ final scheme = 'https';
 final pathToken = 'token';
 
 final pathCases = 'cases';
-final pathCasesSuspected = 'cases/suspected';
-final pathCasesConfirmed = 'cases/confirmed';
+final pathCasesSuspected = 'casesSuspected';
+final pathCasesConfirmed = 'casesConfirmed';
 final pathDeaths = 'deaths';
 final pathRecovered = 'recovered';
 
@@ -25,9 +25,8 @@ class API {
 
   API({@required this.apiKey});
 
-  static final String host = "apigw.nubentos.com";
+  static final String host = "ncov2019-admin.firebaseapp.com";
   static final int port = 443;
-  static final String basePath = 't/nubentos.com/ncovapi/1.0.0';
 
   factory API.sandbox() => API(apiKey: APIKeys.ncovSandboxKey);
 
@@ -35,15 +34,14 @@ class API {
         scheme: scheme,
         host: host,
         port: port,
-        path: pathToken,
-        queryParameters: {'grant_type': 'client_credentials'},
+        path: pathToken
       );
 
   Uri endpointUri(Endpoint endpoint) => Uri(
         scheme: scheme,
         host: host,
         port: port,
-        path: '$basePath/${_paths[endpoint]}',
+        path: '${_paths[endpoint]}',
   );
 
   static Map<Endpoint, String> _paths = {
